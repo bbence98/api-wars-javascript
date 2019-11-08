@@ -47,6 +47,10 @@ function main() {
     const planets_url = 'https://swapi.co/api/planets/';
     const planets_tbl = document.getElementById('planets-desc');
     const people_tbl = document.getElementById('people-desc');
+    const login_btn = document.querySelector('#login');
+    login_btn.addEventListener('click', function () {
+        alert("pressed")
+    });
 
     fetch(planets_url)
         .then((response) => response.json())

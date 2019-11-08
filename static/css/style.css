@@ -26,3 +26,15 @@ table, th, td {
     right: 15px;
     padding: 10px;
 }
+
+.button {
+    padding: 5px;
+}
+
+.user_input {
+    padding: 5px;
+}
+
+.user-button {
+    border-radius: 50px;
+}
