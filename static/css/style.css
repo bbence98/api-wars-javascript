@@ -1,0 +1,28 @@
+body {
+    padding: 15px;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 15px;
+    border-collapse: collapse;
+}
+
+
+.modal {
+    padding: 15px;
+    background: white;
+    margin-left: 100px;
+    margin-top: 80px;
+    margin-right: 580px;
+    margin-bottom: 200px;
+    border: 30px;
+}
+
+.close-button {
+    position: absolute;
+    right: 15px;
+    padding: 10px;
+}
