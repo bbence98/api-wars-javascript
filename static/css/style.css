@@ -2,6 +2,10 @@ body {
     padding: 15px;
 }
 
+p {
+    margin-left: 5px;
+}
+
 
 table, th, td {
     border: 1px solid black;
@@ -21,20 +25,19 @@ table, th, td {
     border: 30px;
 }
 
-.close-button {
+#close-modal {
+    margin-top: 10px;
     position: absolute;
     right: 15px;
     padding: 10px;
+    border-radius: 50px;
 }
 
-.button {
-    padding: 5px;
-}
-
-.user_input {
-    padding: 5px;
-}
 
 .user-button {
     border-radius: 50px;
+}
+
+.should-pad {
+    padding: 5px;
 }

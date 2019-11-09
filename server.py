@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, url_for, session, redirect
 import pass_hash
-import data_manager
+import subfunctions
 
 app = Flask(__name__)
 
@@ -15,11 +15,10 @@ def register_user():
     if request.method == 'POST':
         user_name = request.form.get('username')
         if pass_hash.check_if_user_name_exists(user_name):
-            return redirect(url_for('register_user'))
+            message = 'Name is already taken'
+            return render_template('registration.html', message=message)
         password = request.form.get('password')
-        hashed_password = pass_hash.hash_password(password)
-        inputs = [user_name, hashed_password]
-        data_manager.add_new_user(inputs)
+        subfunctions.add_new_user(user_name, password)
         return redirect(url_for('homepage'))
 
     return render_template('registration.html')

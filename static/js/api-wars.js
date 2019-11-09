@@ -5,7 +5,7 @@ function createCell(tr, data) {
 }
 
 
-function createRowForPlanets(tbl, data) {
+function createRowForPlanet(tbl, data) {
     const tr = document.createElement('tr');
     tr.className = 'planets';
     createCell(tr, data['name']);
@@ -19,7 +19,7 @@ function createRowForPlanets(tbl, data) {
 }
 
 
-function createRowForPeople(tbl, data) {
+function createRowForPerson(tbl, data) {
     const tr = document.createElement('tr');
     tr.setAttribute('class', 'residents-row');
     createCell(tr, data['name']);
@@ -43,43 +43,65 @@ function emptyRows(rows) {
 }
 
 
-function main() {
-    const planets_url = 'https://swapi.co/api/planets/';
-    const planets_tbl = document.getElementById('planets-desc');
-    const people_tbl = document.getElementById('people-desc');
-    const login_btn = document.querySelector('#login');
-    login_btn.addEventListener('click', function () {
-        alert("pressed")
-    });
+function createRowForResidents(residents, table) {
+    for (let resident_url of residents) {
+        fetch(resident_url)
+            .then((response) => response.json())
+            .then((contents) => {
+                createRowForPerson(table, contents)
+            });
+    }
+}
 
-    fetch(planets_url)
+
+function popUpResidents(planetName, residents_url) {
+    const residents_tbl = document.getElementById('people-desc');
+    const modal_rows = document.querySelectorAll('.residents-row');
+    const planet_name = document.getElementById('planet-name');
+    planet_name.innerHTML = `Residents of ${planetName}`;
+    emptyRows(modal_rows);
+    createRowForResidents(residents_url, residents_tbl);
+    $('.modal').modal('show');
+}
+
+
+function createRowsAndGetUrls(planets, list) {
+    const planets_tbl = document.getElementById('planets-desc');
+    for (let planet of planets) {
+                createRowForPlanet(planets_tbl, planet);
+                list.push(planet['residents']);
+            }
+    return list
+}
+
+
+function loadUniverse(url) {
+    fetch(url)
         .then((response) => response.json())
         .then((contents) => {
             const planets = contents.results;
             let residents_url = [];
             let resident_btns = document.createDocumentFragment().childNodes; // creating empty NodeList
-            for (let planet of planets) {
-                createRowForPlanets(planets_tbl, planet);
-                residents_url.push(planet['residents']);
-                resident_btns = document.querySelectorAll('.residents');
-            }
+            residents_url = createRowsAndGetUrls(planets, residents_url);
+            resident_btns = document.querySelectorAll('.residents');
             for (let i = 0; i < resident_btns.length; i++) {
-                resident_btns[i].addEventListener('click', function () {
-                    const modal_rows = document.querySelectorAll('.residents-row');
-                    const planet_name = document.getElementById('planet-name');
-                    planet_name.innerHTML = `Residents of ${planets[i].name}`;
-                    emptyRows(modal_rows);
-                    $('.modal').modal('show');
-                    for (let resident_url of residents_url[i]) {
-                        fetch(resident_url)
-                            .then((response) => response.json())
-                            .then((contents) => {
-                                createRowForPeople(people_tbl, contents)
-                            });
-                    }
+                resident_btns[i].addEventListener('click', function() {
+                    popUpResidents(planets[i].name, residents_url[i])
                 });
             }
         })
+}
+
+
+function main() {
+    const planets_url = 'https://swapi.co/api/planets/';
+    loadUniverse(planets_url);
+
+
+    const login_btn = document.querySelector('#login');
+    login_btn.addEventListener('click', function () {
+        alert("pressed")
+    });
 }
 
 

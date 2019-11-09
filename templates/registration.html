@@ -2,19 +2,22 @@
 {% block content %}
     <h1>Registration</h1>
     <form class="registraion" method="post">
-        <div class="user_input">
+        <div class="user_input should-pad">
             <label for="user_name">User Name:</label><br>
             <input type="text"  id="user_name" name="username" placeholder="Your User Name" autocomplete="off" required><br>
             <label for="pw">Password:</label><br>
             <input type="password"  id="pw" name="password" placeholder="Your Password" autocomplete="off" required><br>
         </div>
-
-        <div class="button">
-            <button class="submit_new_user" type="submit">Register</button><br>
+        <div class="error-message">
+            <p>{{ message }}</p>
         </div>
 
-        <div class="button">
-            <a href="{{ url_for('homepage') }}"><button type="button">Cancel</button></a>
+        <div class="should-pad">
+            <button class="submit_new_user user-button" type="submit">Register</button><br>
+        </div>
+
+        <div class="should-pad">
+            <a href="{{ url_for('homepage') }}"><button class="user-button" type="button">Cancel</button></a>
         </div>
     </form>
 {% endblock %}
