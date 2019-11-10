@@ -1,28 +1,47 @@
 body {
     padding: 15px;
+    background-image: url("../images/star-wars-universe-map.jpeg");
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    height: fit-content;
+    background-repeat: no-repeat;
 }
 
 p {
     margin-left: 5px;
+    color: yellow;
+}
+
+h1 {
+    color: yellow;
+    opacity: 0.8;
+    font-size: 60px;
+}
+
+h2 {
+    color: yellow;
 }
 
 
 table, th, td {
-    border: 1px solid black;
+    border: 3px solid darkslategray;
     text-align: center;
     padding: 15px;
     border-collapse: collapse;
+    color: yellow;
+    background: black;
+    opacity: 0.8;
 }
 
 
 .modal {
     padding: 15px;
-    background: white;
     margin-left: 100px;
     margin-top: 80px;
     margin-right: 580px;
     margin-bottom: 200px;
-    border: 30px;
+    border: 3px solid darkslategray;
 }
 
 #close-modal {
@@ -33,11 +52,44 @@ table, th, td {
     border-radius: 50px;
 }
 
+.modal-content {
+    padding: 5px;
+    background-color: darkslategray;
+    opacity: 0.9;
+}
+
+.content {
+    margin-bottom: 80px;
+}
 
 .user-button {
     border-radius: 50px;
+    background-color: yellow;
+    color: black;
 }
 
 .should-pad {
     padding: 5px;
+}
+
+.registraion {
+    text-align: center;
+    margin-bottom: 560px;
+}
+
+.login {
+    text-align: center;
+    margin-bottom: 560px;
+}
+
+.label {
+    color: yellow;
+}
+
+.user-input {
+    padding: 10px 18px
+}
+
+button:hover {
+    opacity: 0.8;
 }

@@ -1,43 +1,43 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <a href="{{ url_for('register_user') }}"><button class="user-button should-pad" type="button">Register</button> </a>
-    <button class="user-button should-pad" id="login">Log in</button>
-    <h1>STAR WARS Universe Planets</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Diameter(in km)</th>
-                    <th>Climate</th>
-                    <th>Terrain</th>
-                    <th>Surface Water(in %)</th>
-                    <th><strong>Population</strong></th>
-                    <th>Residents</th>
-                </tr>
-            </thead>
-            <tbody id="planets-desc"></tbody>
-        </table>
-    <div class="modal">
-        <div class="modal-content">
-            <h2 id="planet-name"></h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Height</th>
-                            <th>Mass</th>
-                            <th>Hair color</th>
-                            <th>Skin color</th>
-                            <th>Eye color</th>
-                            <th>Birth year</th>
-                            <th>Gender</th>
-                        </tr>
-                    </thead>
-                    <tbody id="people-desc"></tbody>
-                </table>
-        </div>
-        <div class="close-button">
-            <button type="button" id="close-modal" data-dismiss="modal">Close</button>
+    <div class="content">
+        <h1>STAR WARS Universe Planets</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Diameter(in km)</th>
+                        <th>Climate</th>
+                        <th>Terrain</th>
+                        <th>Surface Water(in %)</th>
+                        <th><strong>Population</strong></th>
+                        <th>Residents</th>
+                    </tr>
+                </thead>
+                <tbody id="planets-desc"></tbody>
+            </table>
+        <div class="modal">
+            <div class="modal-content">
+                <h2 id="planet-name"></h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Height</th>
+                                <th>Mass</th>
+                                <th>Hair color</th>
+                                <th>Skin color</th>
+                                <th>Eye color</th>
+                                <th>Birth year</th>
+                                <th>Gender</th>
+                            </tr>
+                        </thead>
+                        <tbody id="people-desc"></tbody>
+                    </table>
+            </div>
+            <div class="close-button">
+                <button type="button" class="user-button" id="close-modal" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

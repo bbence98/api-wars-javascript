@@ -14,7 +14,8 @@ function createRowForPlanet(tbl, data) {
     createCell(tr, data['terrain']);
     createCell(tr, data['surface_water']);
     createCell(tr, data['population']);
-    createCell(tr, `<button type="button" class="residents">${data['residents'].length} Residents</button>`);
+    createCell(tr, `<button type="button" class="residents user-button">${data['residents'].length} Residents</button>`);
+    createCell(tr, '<button type="button" class="vote user-button">Vote</button>');
     tbl.appendChild(tr)
 }
 
@@ -81,13 +82,27 @@ function loadUniverse(url) {
         .then((contents) => {
             const planets = contents.results;
             let residents_url = [];
-            let resident_btns = document.createDocumentFragment().childNodes; // creating empty NodeList
+            let resident_btns; // creating empty NodeList
             residents_url = createRowsAndGetUrls(planets, residents_url);
             resident_btns = document.querySelectorAll('.residents');
+            const vote_btns = document.querySelectorAll('.vote');
             for (let i = 0; i < resident_btns.length; i++) {
                 resident_btns[i].addEventListener('click', function() {
                     popUpResidents(planets[i].name, residents_url[i])
                 });
+            }
+            for (let i = 0; i < vote_btns.length; i++) {
+                vote_btns[i].addEventListener('click', function (event) {
+                    console.log(planets[i]);
+                    $.ajax ('/save-vote', {
+                        type: "POST",
+                        data: planets[i],
+                        dataType: "html",
+                        success : function(data) {
+                            console.log('success')
+                        }
+                    });
+                })
             }
         })
 }
@@ -96,12 +111,6 @@ function loadUniverse(url) {
 function main() {
     const planets_url = 'https://swapi.co/api/planets/';
     loadUniverse(planets_url);
-
-
-    const login_btn = document.querySelector('#login');
-    login_btn.addEventListener('click', function () {
-        alert("pressed")
-    });
 }
 
 

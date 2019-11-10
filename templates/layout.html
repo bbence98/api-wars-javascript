@@ -7,8 +7,18 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/style.css') }}">
     <script src="../static/js/api-wars.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
+    <div class="login-panel">
+        {% if session['username'] %}
+            <p>You are logged in as {{ session['username']}}<br>
+            <a href="{{ url_for('logout') }}">Log out</a></p>
+        {% else %}
+            <a href="{{ url_for('register_user') }}"><button class="user-button should-pad" type="button">Register</button></a>
+            <a href="{{ url_for('login') }}"><button class="user-button should-pad" id="log in">Login</button></a>
+        {% endif %}
+    </div>
     {% block content %} {% endblock %}
 </body>
 </html>

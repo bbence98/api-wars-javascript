@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <form class="registraion login" method="post">
+        <div class="user_input should-pad">
+            <h1>{{ label_0 }}</h1>
+            <label for="user_name" class="label">Username:</label><br>
+            <input type="text"  id="user_name" name="username" placeholder="Username" required><br>
+            <label for="pw" class="label">Password:</label><br>
+            <input type="password"  id="pw" name="password" placeholder="Password" autocomplete="off" required><br>
+        </div>
+        <div class="error-message">
+            <p>{{ error_message }}</p>
+        </div>
+
+        <div class="should-pad">
+            <button class="submit_new_user user-button" type="submit">{{ label_1 if label_1 else label_0 }}</button>
+            <a href="{{ url_for('homepage') }}"><button class="user-button" type="button">Cancel</button></a>
+        </div>
+    </form>
+{% endblock %}

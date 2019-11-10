@@ -14,7 +14,7 @@ def verify_password(plain_text_password, hashed_password):
 
 
 def check_if_user_name_exists(user_name):
-    all_users = data_manager.get_all_users()
+    all_users = data_manager.get_existing_users()
     every_user = []
     for name in all_users:
         every_user.append(name.get('username'))
