@@ -94,14 +94,6 @@ function loadUniverse(url) {
             for (let i = 0; i < vote_btns.length; i++) {
                 vote_btns[i].addEventListener('click', function (event) {
                     console.log(planets[i]);
-                    $.ajax ('/save-vote', {
-                        type: "POST",
-                        data: planets[i],
-                        dataType: "html",
-                        success : function(data) {
-                            console.log('success')
-                        }
-                    });
                 })
             }
         })
