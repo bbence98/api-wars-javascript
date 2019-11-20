@@ -72,11 +72,6 @@ table, th, td {
     padding: 5px;
 }
 
-.registraion {
-    text-align: center;
-    margin-bottom: 560px;
-}
-
 .login {
     text-align: center;
     margin-bottom: 560px;
@@ -93,3 +88,4 @@ table, th, td {
 button:hover {
     opacity: 0.8;
 }
+
